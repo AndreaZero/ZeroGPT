@@ -1,0 +1,101 @@
+.container-donation {
+  margin-top: 2rem;
+  padding: 0.3rem;
+    display: flex;
+    width: 800px;
+    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
+ 
+    font-family: 'gravity-italic';
+  }
+  
+  h1 {
+    color: #ffffff;
+    font-size: 20px;
+  }
+  
+  p {
+    color: #ffffff;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  input,
+  button {
+    
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    margin-bottom: 1rem;
+  }
+  
+  input {
+    width: 50%;
+    min-width: 200px;
+  }
+  
+  button {
+    font-family: 'gravity';
+    cursor: pointer;
+    background-color: #00ff0d;
+    color: #000000;
+    transition: background-color 0.3s;
+    font-weight: bold;
+  }
+  
+  button:hover {
+    background-color: #3d8b40;
+  }
+  
+
+  .container-donation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .donation-row {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    color: #ffffff;
+  }
+  
+  .donation-eth,
+  .donation-paypal {
+    width: 50%;
+    max-width: 300px;
+    box-sizing: border-box;
+    padding: 10px;
+  }
+
+  /* Media query for mobile devices */
+@media (max-width: 768px) {
+  .container-donation {
+    width: 95%;
+  }
+
+  .donation-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .donation-eth,
+  .donation-paypal {
+    width: 100%;
+    max-width: none;
+    text-align: center;
+  }
+
+  .inputt {
+    img {
+      width: 100px;
+      height: 10px;
+    }
+  }
+}
+
+  
