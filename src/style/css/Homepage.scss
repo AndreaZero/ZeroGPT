@@ -1,0 +1,285 @@
+.home-container {
+  padding: 1rem;
+  max-width: 900px;
+  height: auto;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.logo img {
+  width: 130px;
+  height: 130px;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 20px;
+  color: white;
+}
+
+.link-container {
+  margin-bottom: 1rem;
+  width: 1200px;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+/* General button style */
+.btn {
+  text-shadow: 2px 0 #000, -2px 0 #000, 0 2px #000, 0 -2px #000,
+  1px 1px #000, -1px -1px #000, 1px -1px #000, -1px 1px #000;
+  border-radius:  8px;
+  border: none;
+  font-family: 'Lato';
+  font-size: inherit;
+  color: inherit;
+  background: none;
+  cursor: pointer;
+  padding: 25px 80px;
+  display: inline-block;
+  margin: 15px 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  outline: none;
+  position: relative;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.btn:after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+/* Pseudo elements for icons */
+.btn:before {
+  font-family: 'gravity';
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+}
+
+
+/* Icon separator */
+.btn-sep {
+  padding: 15px 40px 10px 90px;
+}
+
+.btn-sep:before {
+  background: rgba(0, 0, 0, 0.5);
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+/* Button 1 */
+.btn-1 {
+  background: #3498db;
+  color: #fff;
+}
+
+.btn-1:hover {
+  background: #2980b9;
+}
+
+.btn-1:active {
+  background: #2980b9;
+  top: 2px;
+}
+
+.btn-1:before {
+  position: absolute;
+  height: 100%;
+  left: 0;
+  top: 0;
+  line-height: 0;
+  font-size: 140%;
+  width: 60px;
+}
+
+/* Button 2 */
+.btn-2 {
+  background: #2ecc71;
+  color: #fff;
+}
+
+.btn-2:hover {
+  background: #27ae60;
+}
+
+.btn-2:active {
+  background: #27ae60;
+  top: 2px;
+}
+
+.btn-2:before {
+  position: absolute;
+  height: 100%;
+  left: 0;
+  top: 0;
+  line-height: 0;
+  font-size: 140%;
+  width: 60px;
+}
+
+/* Button 3 */
+.btn-3 {
+  background: yellow;
+  color: #fff;
+}
+
+.btn-3:hover {
+  background: #c0392b;
+}
+
+.btn-3:active {
+  background: #c0392b;
+  top: 2px;
+}
+
+.btn-3:before {
+  position: absolute;
+  height: 100%;
+  left: 0;
+  top: 0;
+  line-height: 0;
+  font-size: 140%;
+  width: 60px;
+}
+
+/* Button 3 */
+.btn-4 {
+  background: #34495e;
+  color: #fff;
+}
+
+.btn-4:hover {
+  background: #2c3e50;
+}
+
+.btn-4:active {
+  background: #2c3e50;
+  top: 2px;
+}
+
+.btn-4:before {
+  position: absolute;
+  height: 100%;
+  left: 0;
+  top: 0;
+  line-height: 0;
+  font-size: 140%;
+  width: 60px;
+}
+
+/* Icons */
+.icon-chat:before {
+  content: url('../images/chat.png');
+}
+
+.icon-img:before {
+  content: url('../images/img.png')
+}
+
+.icon-audio:before {
+  content: url('../images/audio.png');
+}
+
+.icon-zero:before {
+  content: url('../images/logo-small.png');
+}
+
+
+
+.disclaimer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  padding: 10px;
+  text-align: center;
+}
+
+.disclaimer-txt {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.disclaimer button {
+  background-color: rgb(0, 0, 0);
+  color: #ffffff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+  .home-container {
+    padding: 1rem;
+  }
+
+  .logo img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+  }
+
+  .disclaimer {
+    max-width: 90%;
+    height: auto;
+  }
+
+  .disclaimer-txt {
+    padding: 1.3rem;
+    width: auto;
+    height: auto;
+    text-align: center;
+  }
+
+  .link-container {
+    width: 100%;
+  }
+
+  .btn {
+    flex: 0 0 calc(50% - 30px);
+    max-width: calc(100% - 10px);
+    margin: 10px;
+    font-family: 'gravity';
+  }
+
+  .btn:before {
+    font-size: 110%;
+    width: 50px;
+  }
+
+  .btn-sep {
+    padding: 10px 30px 15px 65px;
+  }
+}
+
+
