@@ -1,0 +1,22 @@
+@font-face {
+  font-family: 'proto';
+  src: url(../fonts/proto.woff);
+}
+
+@font-face {
+  font-family: 'gravity';
+  src: url(../fonts/gravity.woff);
+}
+
+@font-face {
+  font-family: 'gravity-italic';
+  src: url(../fonts/gravity-italic.woff);
+}
+
+
+body {
+  font-family: 'gravity';
+  margin: 0;
+  background: rgb(2,0,36);
+}
+
