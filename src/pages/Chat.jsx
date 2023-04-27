@@ -189,7 +189,7 @@ function Chat() {
 
 
             </MessageList>
-            <MessageInput placeholder="Type message here" onSend={handleSend} />
+            <MessageInput placeholder="Scrivi il messaggio.." onSend={handleSend} />
           </ChatContainer>
         </MainContainer>
         <br></br><br></br><br></br>
