@@ -1,19 +1,34 @@
-import { useState } from 'react';
-import Navbar from "../components/Navbar";
-import "../style/css/Chat.scss"
+import React, { useState } from 'react';
+import Navbar from '../components/Navbar';
+import '../style/css/Chat.scss';
 import Footer from '../components/Footer';
-import logo from "../style/images/logo.png";
+import logo from '../style/images/logo.png';
+import DOMPurify from 'dompurify';
+import { Light as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+
+
+import {
+  MainContainer,
+  ChatContainer,
+  MessageList,
+  Message,
+  MessageInput,
+  TypingIndicator,
+} from '@chatscope/chat-ui-kit-react';
+import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 
 const API_KEY = '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';
 const systemMessage = {
   role: 'system',
-  content: "Explain things like you're talking to a software professional with 2 years of experience.",
+  content:
+    "Explain things like you're talking to a software professional with 2 years of experience.",
 };
 
 function Chat() {
   const [messages, setMessages] = useState([
     {
-      message: "Ciao, come posso aiutarti oggi?",
+      message: 'Ciao, come posso aiutarti oggi?',
       sentTime: 'just now',
       sender: 'ChatGPT',
     },
@@ -87,6 +102,28 @@ function Chat() {
       });
   }
 
+  function formatMessageContent(content) {
+    const codeBlockRegex = /```([^]+?)```/g;
+  
+    // Verifica se il messaggio contiene un blocco di codice
+    const isCodeBlock = codeBlockRegex.test(content);
+  
+    if (isCodeBlock) {
+      // Estrai il contenuto del blocco di codice
+      const codeContent = content.match(codeBlockRegex)[0].slice(3, -3);
+      // Restituisci il contenuto del codice come stringa
+      return { isCodeBlock: true, content: codeContent };
+    } else {
+      // Formatta il testo normalmente
+      const formattedContent = content.replace(/\n\s*\*\s/g, '<li>').replace(/\n/g, '</li><li>');
+  
+      return { isCodeBlock: false, content: DOMPurify.sanitize(formattedContent) };
+    }
+  }
+  
+  
+  
+
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
       handleSend(event.target.value);
@@ -109,26 +146,53 @@ function Chat() {
         Scrivi il tuo messaggio nella casella di input e premi Invio o clicca sul pulsante per inviare il messaggio all'IA.<br></br>
          L'IA elaborerà il tuo messaggio e ti risponderà con la sua migliore risposta. <br></br>
         </div></center>
-        <div className="chat-container">
-          {messages.map((message, i) => (
-            <div key={i} className={`message ${message.sender === 'ChatGPT' ? 'chatgpt' : 'user'}`}>
-              {message.message}
-            </div>
-          ))}
-          {isTyping && (
-            <div className="message chatgpt">{currentTypingMessage}</div>
-          )}
-        </div>
-        <div className="input-container">
-          <input
-            className="message-input"
-            placeholder="Scrivi qui.."
-            onKeyPress={handleKeyPress}
-          />
-          <button className="send-button" onClick={() => handleSend(document.querySelector('.message-input').value)}>
-            Invio
-          </button>
-        </div>
+        <MainContainer style={{ borderRadius: '0.5rem', height: 'auto', width: '900px', margin: 'auto', flexBasis: '90%' }}>
+          <ChatContainer style={{ padding: 8 }}>
+            <MessageList
+              style={{ padding: 8 }}
+              typingIndicator={
+                isTyping ? (
+                  <TypingIndicator
+                    style={{ padding: '1rem', margin: 1, opacity: 0.5 }}
+                    content="ZeroGPT sta scrivendo..."
+                  />
+                ) : null
+              }
+            >
+             
+             {messages.map((msg, i) => {
+  const formattedContent = formatMessageContent(msg.message);
+
+  return (
+    <Message
+      key={i}
+      model={{
+        ...msg,
+        direction: msg.sender === 'ChatGPT' ? 'incoming' : 'outgoing',
+      }}
+      style={{ marginBlock: 8 }}
+    >
+      {formattedContent.isCodeBlock ? (
+        <SyntaxHighlighter language="javascript" style={docco}>
+          {formattedContent.content}
+        </SyntaxHighlighter>
+      ) : (
+        <div
+          dangerouslySetInnerHTML={{
+            __html: formattedContent.content,
+          }}
+        />
+      )}
+    </Message>
+  );
+})}
+
+
+            </MessageList>
+            <MessageInput placeholder="Type message here" onSend={handleSend} />
+          </ChatContainer>
+        </MainContainer>
+        <br></br><br></br><br></br>
       </div>
     </div>
   );
