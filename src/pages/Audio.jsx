@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import logo from "../style/images/logo.png"
 
-const API_KEY = "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";
+const API_KEY = "YOUR-API-KEY";
 
 function Audio() {
   const [audioFile, setAudioFile] = useState(null);
