@@ -5,7 +5,7 @@ import FileReader from 'react-file-reader';
 import Footer from '../components/Footer';
 import logo from "../style/images/logo.png";
 
-const API_KEY = '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';
+const API_KEY = 'YOUR API KEY';
 
 function Images() {
   const [generatedImageUrl, setGeneratedImageUrl] = useState('');
