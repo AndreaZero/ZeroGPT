@@ -18,7 +18,7 @@ import {
 } from '@chatscope/chat-ui-kit-react';
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 
-const API_KEY = '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';
+const API_KEY = 'YOUR-API-KEY';
 const systemMessage = {
   role: 'system',
   content:
